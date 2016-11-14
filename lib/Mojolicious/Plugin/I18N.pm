@@ -172,7 +172,11 @@ sub languages {
 	$self->_load_module($namespace => $_) for @languages;
 
 	if (my $handle = $namespace->get_handle(@languages)) {
-		$handle->fail_with(sub { $_[1] });
+		my $failure_handler = sub {
+			warn("Lookup failure of entry '$_[1]' in language ".ref($handle));
+			$_[1];
+		};
+		$handle->fail_with($failure_handler) if DEBUG;
 		$self->{handle}   = $handle;
 		$self->{language} = $handle->language_tag;
 	}

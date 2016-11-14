@@ -103,6 +103,8 @@ L<Mojolicious::Plugin::I18N> has debug mode.
   # or
   MOJO_I18N_DEBUG=1 perl script.pl
 
+Missing entries in lexicon will be reported in this mode.
+
 =head1 SEE ALSO
 
 L<Mojolicious>, L<Mojolicious::Guides>, L<http://mojolicio.us>.
